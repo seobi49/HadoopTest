@@ -1,4 +1,4 @@
-package com.seobi.hadoop.test01;
+package com.seobi.hadoop.test02;
 
 import java.io.IOException;
 import java.util.StringTokenizer;
@@ -7,15 +7,16 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class WordCountMapper extends Mapper<LongWritable, Text, Text, LongWritable> {
+public class AirlineStatMapper extends Mapper<LongWritable, Text, Text, LongWritable> {
 
 	private final static LongWritable one = new LongWritable(1);
 	private Text word = new Text();
 
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-		StringTokenizer itr = new StringTokenizer(value.toString());
-		while (itr.hasMoreTokens()) {
-			word.set(itr.nextToken());
+		AirlineStatParser parser = new AirlineStatParser(value);
+
+		if (parser.isArrivalDelay() && parser.getArrivalDelay() > 0) {
+			word.set(parser.getYearMonth());
 			context.write(word, one);
 		}
 	}

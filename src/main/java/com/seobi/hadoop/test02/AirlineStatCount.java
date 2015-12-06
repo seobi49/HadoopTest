@@ -1,4 +1,4 @@
-package com.seobi.hadoop.test01;
+package com.seobi.hadoop.test02;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -10,21 +10,21 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
-public class WordCount {
+public class AirlineStatCount {
 
 	public static void main(String[] args) throws Exception {
 		
 		if (args.length != 2) {
-			System.err.println("Usage: WordCount <input> <output>");
+			System.err.println("Usage: AirlineStatCount <input> <output>");
 			System.exit(2);
 		}
 		
 		Configuration conf = new Configuration();
-		Job job = new Job(conf, "WordCount");
+		Job job = new Job(conf, "AirlineStatCount");
 
-		job.setJarByClass(WordCount.class);
-		job.setMapperClass(WordCountMapper.class);
-		job.setReducerClass(WordCountReducer.class);
+		job.setJarByClass(AirlineStatCount.class);
+		job.setMapperClass(AirlineStatMapper.class);
+		job.setReducerClass(AirlineStatReducer.class);
 
 		job.setInputFormatClass(TextInputFormat.class);
 		job.setOutputFormatClass(TextOutputFormat.class);

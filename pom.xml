@@ -29,7 +29,7 @@
 							<tasks>
 								<taskdef name="scp" classname="org.apache.tools.ant.taskdefs.optional.ssh.Scp" classpathref="maven.dependency.classpath" />
 								<scp file="target/${project.artifactId}-${project.version}.jar" 
-									todir="ec2-user:seobi0987@52.69.245.143:/home/ec2-user/tmp" trust="true"/>
+									todir="ec2-user:seobi0987@52.193.39.238:/home/ec2-user/tmp" trust="true"/>
 							</tasks>
 						</configuration>
 					</execution>

@@ -1,4 +1,4 @@
-package com.seobi.hadoop.test01;
+package com.seobi.hadoop.test02;
 
 import java.io.IOException;
 
@@ -6,7 +6,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class WordCountReducer extends Reducer<Text, LongWritable, Text, LongWritable> {
+public class AirlineStatReducer extends Reducer<Text, LongWritable, Text, LongWritable> {
 	private LongWritable result = new LongWritable();
 
 	public void reduce(Text key, Iterable<LongWritable> values, Context context)
